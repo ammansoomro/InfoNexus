@@ -3,6 +3,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser"); // For handling cookies
 const { connectDB } = require("./src/config/db");
 const authRoutes = require('./src/routes/authRoutes');
+const courseRoutes = require('./src/routes/courseRoutes');
 
 const app = express();
 app.use(express.json());
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/course', courseRoutes);
 
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {
