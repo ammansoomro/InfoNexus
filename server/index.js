@@ -1,5 +1,6 @@
 require("dotenv").config(); 
 const express = require("express");
+const cors = require('cors');
 const cookieParser = require("cookie-parser"); // For handling cookies
 const { connectDB } = require("./src/config/db");
 const authRoutes = require('./src/routes/authRoutes');
@@ -15,7 +16,9 @@ const reviewCourseRoutes = require('./src/routes/reviewCourseRoutes');
 const materialRoutes = require('./src/routes/materialRoutes');
 const societyRoutes = require('./src/routes/societyRoutes');
 
+
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser()); // Middleware for handling cookies
 
