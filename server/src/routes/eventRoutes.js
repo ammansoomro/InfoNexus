@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const eventController = require('../controllers/eventController');
-const verify = require('./verifyToken');
+const verify = require("../middleware/verifyToken"); 
 
 router.post('/', verify, eventController.createEvent);
 router.put('/:id', verify, eventController.updateEvent);

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const societyController = require('../controllers/societyController');
-const verify = require('../middlewares/verifyToken');
+const verify = require('../middleware/verifyToken');
 
 router.post('/', verify, societyController.createSociety);
 router.put('/:id', verify, societyController.updateSociety);

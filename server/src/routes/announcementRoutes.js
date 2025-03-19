@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const announcementController = require('../controllers/announcementController');
-const verify = require('./verifyToken');
+const verify = require("../middleware/verifyToken"); 
 
 router.post('/', verify, announcementController.createAnnouncement);
 router.put('/:id', verify, announcementController.updateAnnouncement);

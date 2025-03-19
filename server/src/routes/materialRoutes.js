@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const materialController = require('../controllers/materialController');
-const verify = require('../middlewares/verifyToken');
+const verify = require('../middleware/verifyToken');
 
 router.post('/', verify, materialController.createMaterial);
 router.put('/:id', verify, materialController.updateMaterial);

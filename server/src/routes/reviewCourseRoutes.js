@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const verify = require('../middlewares/verifyToken');
+const verify = require('../middleware/verifyToken');
 const reviewCourseController = require('../controllers/reviewCourseController');
 
 router.post('/', verify, reviewCourseController.createReviewCourse);
