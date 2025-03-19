@@ -5,6 +5,7 @@ const { connectDB } = require("./src/config/db");
 const authRoutes = require('./src/routes/authRoutes');
 const courseRoutes = require('./src/routes/courseRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
+const announcementRoutes = require('./routes/announcementRoutes');
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.use('/api/auth', authRoutes);
 app.use('/api/course', courseRoutes);
 app.use('/api/department', departmentRoutes);
+app.use('/api/announcement', announcementRoutes);
 
 
 // Global Error Handling Middleware
