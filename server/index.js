@@ -9,6 +9,7 @@ const announcementRoutes = require('./routes/announcementRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
 const projectRoutes = require('./routes/projectRoutes');
+const reviewFacultyRoutes = require('./routes/reviewFacultyRoutes');
 const reviewCourseRoutes = require('./routes/reviewCourseRoutes');
 const materialRoutes = require('./routes/materialRoutes');
 
@@ -27,6 +28,7 @@ app.use('/api/events', eventRoutes);
 app.use('/api/faculty', facultyRoutes);
 app.use('/api/project', projectRoutes);
 app.use('/api/reviewCourse', reviewCourseRoutes);
+app.use('/api/reviewFaculty', reviewFacultyRoutes);
 app.use('/api/material', materialRoutes);
 
 // Global Error Handling Middleware
