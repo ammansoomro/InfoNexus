@@ -8,6 +8,7 @@ const departmentRoutes = require('./routes/departmentRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
 const eventRoutes = require('./routes/eventRoutes');
 const facultyRoutes = require('./routes/facultyRoutes');
+const projectRoutes = require('./routes/projectRoutes');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,7 @@ app.use('/api/department', departmentRoutes);
 app.use('/api/announcement', announcementRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/faculty', facultyRoutes);
+app.use('/api/project', projectRoutes);
 
 // Global Error Handling Middleware
 app.use((err, req, res, next) => {
