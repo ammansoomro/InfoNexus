@@ -1,6 +1,6 @@
 const projectService = require('../services/projectService');
 
-exports.createProject = async (req, res) => {
+const createProject = async (req, res) => {
     try {
         const project = await projectService.createProject(req.body);
         res.status(200).json(project);
@@ -9,7 +9,7 @@ exports.createProject = async (req, res) => {
     }
 };
 
-exports.updateProject = async (req, res) => {
+const updateProject = async (req, res) => {
     try {
         const project = await projectService.updateProject(req.params.id, req.body);
         res.status(200).json(project);
@@ -18,7 +18,7 @@ exports.updateProject = async (req, res) => {
     }
 };
 
-exports.deleteProject = async (req, res) => {
+const deleteProject = async (req, res) => {
     try {
         await projectService.deleteProject(req.params.id);
         res.status(200).json('Project has been deleted');
@@ -27,7 +27,7 @@ exports.deleteProject = async (req, res) => {
     }
 };
 
-exports.getProjectById = async (req, res) => {
+const getProjectById = async (req, res) => {
     try {
         const project = await projectService.getProjectById(req.params.id);
         res.status(200).json(project);
@@ -36,7 +36,7 @@ exports.getProjectById = async (req, res) => {
     }
 };
 
-exports.getAllProjects = async (req, res) => {
+const getAllProjects = async (req, res) => {
     try {
         const projects = await projectService.getAllProjects(req.query.new);
         res.status(200).json(projects);
@@ -45,7 +45,7 @@ exports.getAllProjects = async (req, res) => {
     }
 };
 
-exports.searchProjects = async (req, res) => {
+const searchProjects = async (req, res) => {
     try {
         const projects = await projectService.searchProjects(req.params.search);
         res.status(200).json(projects);
@@ -54,7 +54,7 @@ exports.searchProjects = async (req, res) => {
     }
 };
 
-exports.getProjectsByType = async (req, res) => {
+const getProjectsByType = async (req, res) => {
     try {
         const projects = await projectService.getProjectsByType(req.params.type);
         res.status(200).json(projects);
@@ -63,7 +63,7 @@ exports.getProjectsByType = async (req, res) => {
     }
 };
 
-exports.getProjectsByDomain = async (req, res) => {
+const getProjectsByDomain = async (req, res) => {
     try {
         const projects = await projectService.getProjectsByDomain(req.params.domain);
         res.status(200).json(projects);
@@ -72,7 +72,7 @@ exports.getProjectsByDomain = async (req, res) => {
     }
 };
 
-exports.getProjectsByTypeAndDomain = async (req, res) => {
+const getProjectsByTypeAndDomain = async (req, res) => {
     try {
         const projects = await projectService.getProjectsByTypeAndDomain(req.params.type, req.params.domain);
         res.status(200).json(projects);
@@ -80,3 +80,5 @@ exports.getProjectsByTypeAndDomain = async (req, res) => {
         res.status(500).json(err);
     }
 };
+
+module.exports = { createProject, updateProject, deleteProject, getProjectById, getAllProjects, searchProjects, getProjectsByType, getProjectsByDomain, getProjectsByTypeAndDomain };

@@ -1,6 +1,6 @@
 const facultyService = require('../services/facultyService');
 
-exports.createFaculty = async (req, res) => {
+const createFaculty = async (req, res) => {
     try {
         if (!req.user.isAdmin) return res.status(403).json('You are not allowed to create faculties');
         const faculty = await facultyService.createFaculty(req.body);
@@ -10,7 +10,7 @@ exports.createFaculty = async (req, res) => {
     }
 };
 
-exports.updateFaculty = async (req, res) => {
+const updateFaculty = async (req, res) => {
     try {
         if (!req.user.isAdmin) return res.status(403).json('You are not allowed to update faculties');
         const faculty = await facultyService.updateFaculty(req.params.id, req.body);
@@ -20,7 +20,7 @@ exports.updateFaculty = async (req, res) => {
     }
 };
 
-exports.deleteFaculty = async (req, res) => {
+const deleteFaculty = async (req, res) => {
     try {
         if (!req.user.isAdmin) return res.status(403).json('You are not allowed to delete faculties');
         await facultyService.deleteFaculty(req.params.id);
@@ -30,7 +30,7 @@ exports.deleteFaculty = async (req, res) => {
     }
 };
 
-exports.getFacultyById = async (req, res) => {
+const getFacultyById = async (req, res) => {
     try {
         const faculty = await facultyService.getFacultyById(req.params.id);
         res.status(200).json(faculty);
@@ -39,7 +39,7 @@ exports.getFacultyById = async (req, res) => {
     }
 };
 
-exports.getAllFaculties = async (req, res) => {
+const getAllFaculties = async (req, res) => {
     try {
         const faculties = await facultyService.getAllFaculties(req.query.new);
         res.status(200).json(faculties);
@@ -48,7 +48,7 @@ exports.getAllFaculties = async (req, res) => {
     }
 };
 
-exports.searchFaculties = async (req, res) => {
+const searchFaculties = async (req, res) => {
     try {
         const faculties = await facultyService.searchFaculties(req.params.searchString);
         res.status(200).json(faculties);
@@ -57,7 +57,7 @@ exports.searchFaculties = async (req, res) => {
     }
 };
 
-exports.paginateFaculties = async (req, res) => {
+const paginateFaculties = async (req, res) => {
     try {
         const faculties = await facultyService.paginateFaculties(parseInt(req.params.page, 10));
         res.status(200).json(faculties);
@@ -66,7 +66,7 @@ exports.paginateFaculties = async (req, res) => {
     }
 };
 
-exports.getFacultiesByDepartment = async (req, res) => {
+const getFacultiesByDepartment = async (req, res) => {
     try {
         const faculties = await facultyService.getFacultiesByDepartment(req.params.department);
         res.status(200).json(faculties);
@@ -75,7 +75,7 @@ exports.getFacultiesByDepartment = async (req, res) => {
     }
 };
 
-exports.getCoursesByFacultyId = async (req, res) => {
+const getCoursesByFacultyId = async (req, res) => {
     try {
         const courses = await facultyService.getCoursesByFacultyId(req.params.id);
         res.status(200).json(courses);
@@ -83,3 +83,5 @@ exports.getCoursesByFacultyId = async (req, res) => {
         res.status(500).json(err);
     }
 };
+
+module.exports = { createFaculty, updateFaculty, deleteFaculty, getFacultyById, getAllFaculties, searchFaculties, paginateFaculties, getFacultiesByDepartment, getCoursesByFacultyId };

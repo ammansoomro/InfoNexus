@@ -1,6 +1,6 @@
 const materialService = require('../services/materialService');
 
-exports.createMaterial = async (req, res) => {
+const createMaterial = async (req, res) => {
     if (!req.user.isAdmin) return res.status(403).json('You are not allowed to create materials');
 
     try {
@@ -11,7 +11,7 @@ exports.createMaterial = async (req, res) => {
     }
 };
 
-exports.updateMaterial = async (req, res) => {
+const updateMaterial = async (req, res) => {
     if (!req.user.isAdmin) return res.status(403).json('You are not allowed to update materials');
 
     try {
@@ -22,7 +22,7 @@ exports.updateMaterial = async (req, res) => {
     }
 };
 
-exports.deleteMaterial = async (req, res) => {
+const deleteMaterial = async (req, res) => {
     if (!req.user.isAdmin) return res.status(403).json('You are not allowed to delete materials');
 
     try {
@@ -33,7 +33,7 @@ exports.deleteMaterial = async (req, res) => {
     }
 };
 
-exports.getMaterialById = async (req, res) => {
+const getMaterialById = async (req, res) => {
     try {
         const material = await materialService.getMaterialById(req.params.id);
         res.status(200).json(material);
@@ -42,7 +42,7 @@ exports.getMaterialById = async (req, res) => {
     }
 };
 
-exports.getAllMaterials = async (req, res) => {
+const getAllMaterials = async (req, res) => {
     try {
         const materials = await materialService.getAllMaterials();
         res.status(200).json(materials);
@@ -51,7 +51,7 @@ exports.getAllMaterials = async (req, res) => {
     }
 };
 
-exports.getMaterialsByCourse = async (req, res) => {
+const getMaterialsByCourse = async (req, res) => {
     try {
         const materials = await materialService.getMaterialsByCourse(req.params.course_id);
         res.status(200).json(materials);
@@ -60,7 +60,7 @@ exports.getMaterialsByCourse = async (req, res) => {
     }
 };
 
-exports.getMaterialsByTeacher = async (req, res) => {
+const getMaterialsByTeacher = async (req, res) => {
     try {
         const materials = await materialService.getMaterialsByTeacher(req.params.teacher_id);
         res.status(200).json(materials);
@@ -69,7 +69,7 @@ exports.getMaterialsByTeacher = async (req, res) => {
     }
 };
 
-exports.getMaterialsByCourseAndTeacher = async (req, res) => {
+const getMaterialsByCourseAndTeacher = async (req, res) => {
     try {
         const materials = await materialService.getMaterialsByCourseAndTeacher(req.params.course_id, req.params.teacher_id);
         res.status(200).json(materials);
@@ -78,7 +78,7 @@ exports.getMaterialsByCourseAndTeacher = async (req, res) => {
     }
 };
 
-exports.getMaterialsByCourseTeacherAndType = async (req, res) => {
+const getMaterialsByCourseTeacherAndType = async (req, res) => {
     if (!req.user) return res.status(403).json('You are not allowed to view materials');
 
     try {
@@ -88,3 +88,5 @@ exports.getMaterialsByCourseTeacherAndType = async (req, res) => {
         res.status(500).json(err.message);
     }
 };
+
+module.exports = { createMaterial, updateMaterial, deleteMaterial, getMaterialById, getAllMaterials, getMaterialsByCourse, getMaterialsByTeacher, getMaterialsByCourseAndTeacher, getMaterialsByCourseTeacherAndType };

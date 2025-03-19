@@ -1,6 +1,6 @@
 const announcementService = require('../services/announcementService');
 
-exports.createAnnouncement = async (req, res) => {
+const createAnnouncement = async (req, res) => {
     try {
         const announcement = await announcementService.createAnnouncement(req.body);
         res.status(201).json(announcement);
@@ -9,7 +9,7 @@ exports.createAnnouncement = async (req, res) => {
     }
 };
 
-exports.updateAnnouncement = async (req, res) => {
+const updateAnnouncement = async (req, res) => {
     try {
         const updatedAnnouncement = await announcementService.updateAnnouncement(req.params.id, req.body);
         res.status(200).json(updatedAnnouncement);
@@ -18,7 +18,7 @@ exports.updateAnnouncement = async (req, res) => {
     }
 };
 
-exports.deleteAnnouncement = async (req, res) => {
+const deleteAnnouncement = async (req, res) => {
     try {
         await announcementService.deleteAnnouncement(req.params.id);
         res.status(200).json({ message: 'Announcement has been deleted' });
@@ -27,7 +27,7 @@ exports.deleteAnnouncement = async (req, res) => {
     }
 };
 
-exports.getAnnouncement = async (req, res) => {
+const getAnnouncement = async (req, res) => {
     try {
         const announcement = await announcementService.getAnnouncement(req.params.id);
         res.status(200).json(announcement);
@@ -36,7 +36,7 @@ exports.getAnnouncement = async (req, res) => {
     }
 };
 
-exports.getAllAnnouncements = async (req, res) => {
+const getAllAnnouncements = async (req, res) => {
     try {
         const announcements = await announcementService.getAllAnnouncements(req.query.new);
         res.status(200).json(announcements);
@@ -45,7 +45,7 @@ exports.getAllAnnouncements = async (req, res) => {
     }
 };
 
-exports.getAnnouncementsByType = async (req, res) => {
+const getAnnouncementsByType = async (req, res) => {
     try {
         const announcements = await announcementService.getAnnouncementsByType(req.params.type);
         res.status(200).json(announcements);
@@ -53,3 +53,5 @@ exports.getAnnouncementsByType = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+module.exports = { createAnnouncement, updateAnnouncement, deleteAnnouncement, getAnnouncement, getAllAnnouncements, getAnnouncementsByType };

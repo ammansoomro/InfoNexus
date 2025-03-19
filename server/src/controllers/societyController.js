@@ -1,6 +1,6 @@
 const societyService = require('../services/societyService');
 
-exports.createSociety = async (req, res) => {
+const createSociety = async (req, res) => {
     try {
         const savedSociety = await societyService.createSociety(req.body);
         res.status(200).json(savedSociety);
@@ -9,7 +9,7 @@ exports.createSociety = async (req, res) => {
     }
 };
 
-exports.updateSociety = async (req, res) => {
+const updateSociety = async (req, res) => {
     try {
         const updatedSociety = await societyService.updateSociety(req.params.id, req.body);
         res.status(200).json(updatedSociety);
@@ -18,7 +18,7 @@ exports.updateSociety = async (req, res) => {
     }
 };
 
-exports.deleteSociety = async (req, res) => {
+const deleteSociety = async (req, res) => {
     try {
         const message = await societyService.deleteSociety(req.params.id);
         res.status(200).json(message);
@@ -27,7 +27,7 @@ exports.deleteSociety = async (req, res) => {
     }
 };
 
-exports.getSocietyById = async (req, res) => {
+const getSocietyById = async (req, res) => {
     try {
         const society = await societyService.getSocietyById(req.params.id);
         res.status(200).json(society);
@@ -36,7 +36,7 @@ exports.getSocietyById = async (req, res) => {
     }
 };
 
-exports.getAllSocieties = async (req, res) => {
+const getAllSocieties = async (req, res) => {
     try {
         const societies = await societyService.getAllSocieties(req.query.new);
         res.status(200).json(societies);
@@ -45,7 +45,7 @@ exports.getAllSocieties = async (req, res) => {
     }
 };
 
-exports.searchSociety = async (req, res) => {
+const searchSociety = async (req, res) => {
     try {
         const societies = await societyService.searchSociety(req.params.name);
         res.status(200).json(societies);
@@ -54,7 +54,7 @@ exports.searchSociety = async (req, res) => {
     }
 };
 
-exports.getRandomSociety = async (req, res) => {
+const getRandomSociety = async (req, res) => {
     try {
         const society = await societyService.getRandomSociety(req.query.type);
         res.status(200).json(society);
@@ -62,3 +62,5 @@ exports.getRandomSociety = async (req, res) => {
         res.status(400).json({ error: err.message });
     }
 };
+
+module.exports = { createSociety, updateSociety, deleteSociety, getSocietyById, getAllSocieties, searchSociety, getRandomSociety };

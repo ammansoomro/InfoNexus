@@ -1,6 +1,6 @@
 const userService = require('../services/userService');
 
-exports.updateUser = async (req, res) => {
+const updateUser = async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
         try {
             const updatedUser = await userService.updateUser(req.params.id, req.body);
@@ -13,7 +13,7 @@ exports.updateUser = async (req, res) => {
     }
 };
 
-exports.deleteUser = async (req, res) => {
+const deleteUser = async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
         try {
             await userService.deleteUser(req.params.id);
@@ -26,7 +26,7 @@ exports.deleteUser = async (req, res) => {
     }
 };
 
-exports.getUserById = async (req, res) => {
+const getUserById = async (req, res) => {
     try {
         const user = await userService.getUserById(req.params.id);
         if (user) {
@@ -39,7 +39,7 @@ exports.getUserById = async (req, res) => {
     }
 };
 
-exports.getAllUsers = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
         const users = await userService.getAllUsers(req.query.new);
         res.status(200).json(users);
@@ -48,7 +48,7 @@ exports.getAllUsers = async (req, res) => {
     }
 };
 
-exports.getUserStats = async (req, res) => {
+const getUserStats = async (req, res) => {
     try {
         const stats = await userService.getUserStats();
         res.status(200).json(stats);
@@ -57,7 +57,7 @@ exports.getUserStats = async (req, res) => {
     }
 };
 
-exports.changePassword = async (req, res) => {
+const changePassword = async (req, res) => {
     if (req.user.id === req.params.id || req.user.isAdmin) {
         try {
             const result = await userService.changePassword(req.params.id, req.body.oldPassword, req.body.password);
@@ -69,3 +69,5 @@ exports.changePassword = async (req, res) => {
         res.status(403).json('You can update only your account');
     }
 };
+
+module.exports = { updateUser, deleteUser, getUserById, getAllUsers, getUserStats, changePassword };

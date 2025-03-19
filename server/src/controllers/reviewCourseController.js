@@ -1,6 +1,6 @@
 const reviewCourseService = require('../services/reviewCourseService');
 
-exports.createReviewCourse = async (req, res) => {
+const createReviewCourse = async (req, res) => {
     try {
         const reviewCourse = await reviewCourseService.createReviewCourse(req.body);
         res.status(200).json(reviewCourse);
@@ -9,7 +9,7 @@ exports.createReviewCourse = async (req, res) => {
     }
 };
 
-exports.updateReviewCourse = async (req, res) => {
+const updateReviewCourse = async (req, res) => {
     try {
         const reviewCourse = await reviewCourseService.updateReviewCourse(req.params.id, req.body);
         res.status(200).json(reviewCourse);
@@ -18,7 +18,7 @@ exports.updateReviewCourse = async (req, res) => {
     }
 };
 
-exports.deleteReviewCourse = async (req, res) => {
+const deleteReviewCourse = async (req, res) => {
     try {
         await reviewCourseService.deleteReviewCourse(req.params.id);
         res.status(200).json('ReviewCourse has been deleted');
@@ -27,7 +27,7 @@ exports.deleteReviewCourse = async (req, res) => {
     }
 };
 
-exports.getReviewCourseByCourseId = async (req, res) => {
+const getReviewCourseByCourseId = async (req, res) => {
     try {
         const reviewCourses = await reviewCourseService.getReviewCourseByCourseId(req.params.course_id);
         res.status(200).json(reviewCourses);
@@ -36,7 +36,7 @@ exports.getReviewCourseByCourseId = async (req, res) => {
     }
 };
 
-exports.getAllReviewCourses = async (req, res) => {
+const getAllReviewCourses = async (req, res) => {
     try {
         const reviewCourses = await reviewCourseService.getAllReviewCourses();
         res.status(200).json(reviewCourses);
@@ -45,7 +45,7 @@ exports.getAllReviewCourses = async (req, res) => {
     }
 };
 
-exports.getUpvoteCount = async (req, res) => {
+const getUpvoteCount = async (req, res) => {
     try {
         const count = await reviewCourseService.getUpvoteCount(req.params.course_id);
         res.status(200).json(count);
@@ -54,7 +54,7 @@ exports.getUpvoteCount = async (req, res) => {
     }
 };
 
-exports.getDownvoteCount = async (req, res) => {
+const getDownvoteCount = async (req, res) => {
     try {
         const count = await reviewCourseService.getDownvoteCount(req.params.course_id);
         res.status(200).json(count);
@@ -63,7 +63,7 @@ exports.getDownvoteCount = async (req, res) => {
     }
 };
 
-exports.getRating = async (req, res) => {
+const getRating = async (req, res) => {
     try {
         const rating = await reviewCourseService.getRating(req.params.course_id);
         res.status(200).json(rating);
@@ -71,3 +71,5 @@ exports.getRating = async (req, res) => {
         res.status(500).json(err);
     }
 };
+
+module.exports = { createReviewCourse, updateReviewCourse, deleteReviewCourse, getReviewCourseByCourseId, getAllReviewCourses, getUpvoteCount, getDownvoteCount, getRating };

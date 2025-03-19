@@ -1,6 +1,6 @@
 const eventService = require('../services/eventService');
 
-exports.createEvent = async (req, res) => {
+const createEvent = async (req, res) => {
     try {
         const event = await eventService.createEvent(req.body);
         res.status(201).json(event);
@@ -9,7 +9,7 @@ exports.createEvent = async (req, res) => {
     }
 };
 
-exports.updateEvent = async (req, res) => {
+const updateEvent = async (req, res) => {
     try {
         const updatedEvent = await eventService.updateEvent(req.params.id, req.body);
         res.status(200).json(updatedEvent);
@@ -18,7 +18,7 @@ exports.updateEvent = async (req, res) => {
     }
 };
 
-exports.deleteEvent = async (req, res) => {
+const deleteEvent = async (req, res) => {
     try {
         await eventService.deleteEvent(req.params.id);
         res.status(200).json({ message: 'Event has been deleted' });
@@ -27,7 +27,7 @@ exports.deleteEvent = async (req, res) => {
     }
 };
 
-exports.getEvent = async (req, res) => {
+const getEvent = async (req, res) => {
     try {
         const event = await eventService.getEvent(req.params.id);
         res.status(200).json(event);
@@ -36,7 +36,7 @@ exports.getEvent = async (req, res) => {
     }
 };
 
-exports.getAllEvents = async (req, res) => {
+const getAllEvents = async (req, res) => {
     try {
         const events = await eventService.getAllEvents();
         res.status(200).json(events);
@@ -45,7 +45,7 @@ exports.getAllEvents = async (req, res) => {
     }
 };
 
-exports.getEventsBySocietyCode = async (req, res) => {
+const getEventsBySocietyCode = async (req, res) => {
     try {
         const events = await eventService.getEventsBySocietyCode(req.params.societyCode);
         res.status(200).json(events);
@@ -54,7 +54,7 @@ exports.getEventsBySocietyCode = async (req, res) => {
     }
 };
 
-exports.getEventsBySocietyId = async (req, res) => {
+const getEventsBySocietyId = async (req, res) => {
     try {
         const events = await eventService.getEventsBySocietyId(req.params.societyId);
         res.status(200).json(events);
@@ -62,3 +62,5 @@ exports.getEventsBySocietyId = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+module.exports = { createEvent, updateEvent, deleteEvent, getEvent, getAllEvents, getEventsBySocietyCode, getEventsBySocietyId };

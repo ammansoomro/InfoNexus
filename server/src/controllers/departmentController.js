@@ -1,6 +1,6 @@
 const departmentService = require('../services/departmentService');
 
-exports.createDepartment = async (req, res) => {
+const createDepartment = async (req, res) => {
     try {
         const department = await departmentService.createDepartment(req.body);
         res.status(201).json(department);
@@ -9,7 +9,7 @@ exports.createDepartment = async (req, res) => {
     }
 };
 
-exports.updateDepartment = async (req, res) => {
+const updateDepartment = async (req, res) => {
     try {
         const updatedDepartment = await departmentService.updateDepartment(req.params.id, req.body);
         res.status(200).json(updatedDepartment);
@@ -18,7 +18,7 @@ exports.updateDepartment = async (req, res) => {
     }
 };
 
-exports.deleteDepartment = async (req, res) => {
+const deleteDepartment = async (req, res) => {
     try {
         await departmentService.deleteDepartment(req.params.id);
         res.status(200).json({ message: 'Department has been deleted' });
@@ -27,7 +27,7 @@ exports.deleteDepartment = async (req, res) => {
     }
 };
 
-exports.getDepartment = async (req, res) => {
+const getDepartment = async (req, res) => {
     try {
         const department = await departmentService.getDepartment(req.params.id);
         res.status(200).json(department);
@@ -36,7 +36,7 @@ exports.getDepartment = async (req, res) => {
     }
 };
 
-exports.getAllDepartments = async (req, res) => {
+const getAllDepartments = async (req, res) => {
     try {
         const departments = await departmentService.getAllDepartments(req.query.new);
         res.status(200).json(departments);
@@ -45,7 +45,7 @@ exports.getAllDepartments = async (req, res) => {
     }
 };
 
-exports.getDepartmentBackground = async (req, res) => {
+const getDepartmentBackground = async (req, res) => {
     try {
         const background = await departmentService.getDepartmentBackground(req.params.code);
         res.status(200).json(background);
@@ -54,7 +54,7 @@ exports.getDepartmentBackground = async (req, res) => {
     }
 };
 
-exports.searchDepartment = async (req, res) => {
+const searchDepartment = async (req, res) => {
     try {
         const departments = await departmentService.searchDepartment(req.params.name);
         res.status(200).json(departments);
@@ -62,3 +62,5 @@ exports.searchDepartment = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+module.exports = { createDepartment, updateDepartment, deleteDepartment, getDepartment, getAllDepartments, getDepartmentBackground, searchDepartment };

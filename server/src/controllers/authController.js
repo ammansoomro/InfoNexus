@@ -1,7 +1,7 @@
 const authService = require('../services/authService');
 
 // Register a new user
-exports.register = async (req, res) => {
+const register = async (req, res) => {
     try {
         const user = await authService.registerUser(req.body);
         res.status(201).json(user);
@@ -11,7 +11,7 @@ exports.register = async (req, res) => {
 };
 
 // Login user
-exports.login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { userData, accessToken } = await authService.loginUser(req.body);
 
@@ -25,3 +25,5 @@ exports.login = async (req, res) => {
         res.status(401).json({ message: error.message });
     }
 };
+
+module.exports = { register, login };
