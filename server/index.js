@@ -3,6 +3,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser"); // For handling cookies
 const { connectDB } = require("./src/config/db");
 const authRoutes = require('./src/routes/authRoutes');
+const userRoutes = require('./src/routes/userRoutes');
 const courseRoutes = require('./src/routes/courseRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
 const announcementRoutes = require('./routes/announcementRoutes');
@@ -22,6 +23,7 @@ const PORT = process.env.PORT || 5000;
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/course', courseRoutes);
 app.use('/api/department', departmentRoutes);
 app.use('/api/announcement', announcementRoutes);
