@@ -1,7 +1,13 @@
+import { Route, Routes, Navigate } from "react-router-dom";
+import Login from "./pages/Login/Login";
+
 export default function App() {
+  const isLoggedIn = false;
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900 text-white">
-      <h1 className="text-4xl font-bold">Hello, Tailwind CSS v3 in React!</h1>
-    </div>
+    <Routes>
+      <Route path="/" element={isLoggedIn ? <></> : <Navigate to="/login" />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
   );
 }
