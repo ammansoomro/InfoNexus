@@ -1,10 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext/AuthContext";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { login } = useAuth();
+
+  const handleLogin = () => {
+    // Dummy login function (replace with API call later)
+    if (username && password) {
+      login();
+      navigate("/");
+    } else {
+      alert("Please enter username and password");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-900 text-white">
@@ -30,12 +42,16 @@ const Login = () => {
             placeholder="Enter your password"
           />
         </div>
-        <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition">
+        <button
+          onClick={handleLogin}
+          className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition"
+        >
           Login
         </button>
-        <button 
-          onClick={() => navigate("/signup")} 
-          className="w-full mt-2 text-blue-400 hover:underline">
+        <button
+          onClick={() => navigate("/signup")}
+          className="w-full mt-2 text-blue-400 hover:underline"
+        >
           Not a user? Sign up
         </button>
       </div>
