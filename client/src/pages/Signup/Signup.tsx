@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "../../components/Button/Button";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -50,18 +51,24 @@ const Signup = () => {
             type="password"
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
-            className={`w-full px-3 py-2 text-black rounded-md focus:outline-none focus:ring-2 ${isPasswordMatch ? "focus:ring-blue-500" : "focus:ring-red-500 border-red-500"}`}
+            className={`w-full px-3 py-2 text-black rounded-md focus:outline-none focus:ring-2 ${
+              isPasswordMatch
+                ? "focus:ring-blue-500"
+                : "focus:ring-red-500 border-red-500"
+            }`}
             placeholder="Repeat your password"
           />
         </div>
-        <button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition">
-          Sign Up
-        </button>
-        <button 
-          onClick={() => navigate("/login")} 
-          className="w-full mt-2 text-blue-400 hover:underline">
-          Already have an account? Login
-        </button>
+        <Button
+          onClick={() => navigate("/signup")}
+          label="Sign Up"
+          type="primary"
+        />
+        <Button
+          onClick={() => navigate("/login")}
+          label="Login"
+          type="secondary"
+        />
       </div>
     </div>
   );

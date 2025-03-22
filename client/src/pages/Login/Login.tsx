@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext/AuthContext";
+import Button from "../../components/Button/Button";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -42,18 +43,12 @@ const Login = () => {
             placeholder="Enter your password"
           />
         </div>
-        <button
-          onClick={handleLogin}
-          className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-md transition"
-        >
-          Login
-        </button>
-        <button
+        <Button onClick={handleLogin} label="Login" type="primary" />
+        <Button
           onClick={() => navigate("/signup")}
-          className="w-full mt-2 text-blue-400 hover:underline"
-        >
-          Not a user? Sign up
-        </button>
+          label="Sign up"
+          type="secondary"
+        />
       </div>
     </div>
   );
