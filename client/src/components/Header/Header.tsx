@@ -3,7 +3,7 @@ import { useAuth } from "../../context/AuthContext/AuthContext";
 
 const menuItems = [
   { name: "Courses", path: "/courses" },
-  { name: "Faculty", path: "/faculty" },
+  { name: "Faculty", path: "/faculties" },
   { name: "Departments", path: "/departments" },
   { name: "Societies", path: "/societies" },
   { name: "Projects", path: "/projects" },
