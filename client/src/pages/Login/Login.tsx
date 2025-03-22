@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = () => {
     // Dummy login function (replace with API call later)
     if (username && password) {
-      login();
+      login(username);
       navigate("/");
     } else {
       alert("Please enter username and password");
