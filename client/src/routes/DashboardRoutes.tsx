@@ -1,5 +1,6 @@
 import { Route, Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext/AuthContext";
+import Home from "../pages/Home/Home";
 import Course from "../pages/Course/Information/Information";
 import CourseList from "../pages/Course/List/List";
 import Project from "../pages/Project/Information/Information";
@@ -18,6 +19,10 @@ const DashboardRoutes = () => {
 
   return (
     <>
+      <Route
+        path="/"
+        element={isAuthenticated ? <Home /> : <Navigate to="/login" />}
+      />
       <Route
         path="/courses"
         element={isAuthenticated ? <CourseList /> : <Navigate to="/login" />}

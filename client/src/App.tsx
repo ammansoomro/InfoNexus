@@ -10,7 +10,11 @@ export default function App() {
   const location = useLocation();
 
   useEffect(() => {
-    if (!isAuthenticated && location.pathname !== "/login" && location.pathname !== "/signup") {
+    if (
+      !isAuthenticated &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/signup"
+    ) {
       navigate("/login");
     }
   }, [isAuthenticated, location.pathname, navigate]);
